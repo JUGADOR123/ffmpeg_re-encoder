@@ -32,3 +32,16 @@
                             audio_codecs.append(cname)
                         if ctype=="video" and cname not in video_codecs:
                             video_codecs.append(cname)
+
+
+
+                                    newdir = []
+        for root, sub, file in os.walk(self.folder, topdown=False):
+            if self.blacklist in root:
+                nd = root.replace(self.blacklist, " ")
+                print(f"New Directory: {nd}")
+
+                os.rename(root, nd)
+            else:
+                pass
+                # print(f"No change required: {root}")

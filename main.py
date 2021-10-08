@@ -5,12 +5,13 @@ import shlex
 import subprocess
 from posixpath import splitext
 from typing import List, Literal, Union
+from pathlib import Path
 
 
 class program:
     def __init__(
         self,
-        folder: str = None,
+        base_path: str = None,
         vcodecs: List[str] = None,
         acodecs: List[str] = None,
         containers: List[str] = None,
@@ -18,7 +19,7 @@ class program:
         blacklist: str = "'",
         failed_files: List[str] = None,
     ) -> None:
-        self.folder = folder
+        self.base_path = base_path
         self.vcodecs = vcodecs
         self.acodecs = acodecs
         self.containers = containers
@@ -27,19 +28,15 @@ class program:
         self.blacklist = blacklist
 
     def analysis(self) -> None:
-        """Checks for incompatible folder names"""
-        newdir = []
-        for root, sub, file in os.walk(self.folder, topdown=False):
-            if self.blacklist in root:
-                nd = root.replace(self.blacklist, " ")
-                print(f"New Directory: {nd}")
+        """Checks for incompatible base_path names"""
+        subdirectories=[]
 
-                os.rename(root, nd)
-            else:
-                pass
-                # print(f"No change required: {root}")
+            
 
 
-# folder = input("Enter Absolute folder path: ")
-folder = r"C:\Users\Jugador\Desktop\test"
-program(folder).analysis()
+
+
+# base_path = input("Enter Absolute folder path: ")
+base_path = r"C:\Users\Jugador\Desktop\test"
+program(base_path).analysis()
+
