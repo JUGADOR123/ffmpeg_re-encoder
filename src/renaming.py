@@ -2,7 +2,6 @@ from pathlib import Path
 import os
 import shutil
 
-os.system("")
 
 HEADER = "\033[95m"
 BLUE = "\033[94m"
@@ -21,7 +20,7 @@ class Rename:
         to_remove: str,
         to_add: str,
     ) -> None:
-        self.base_folder = Path(base_folder)
+        self.base_folder = Path(base_folder).absolute()
         self.to_remove = to_remove
         self.to_add = to_add
         self.failed = []
