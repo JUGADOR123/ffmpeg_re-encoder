@@ -18,12 +18,12 @@ def main():
     print(f"{CYAN}Starting analysis on folders{RESET}")
     print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
     sleep(5)
-    check=Rename(to_remove="'",to_add=" ",base_folder=path).run()
-    if check:
-        print(f'{RED}{BOLD}{"=" * width}{RESET}')
-        print(f"{RED}{BOLD}ERRORS FOUND: STOPPING EXECUTION{RESET}")
-        print(f'{RED}{BOLD}{"=" * width}{RESET}')
-        sys.exit(1)
+    #check=Rename(to_remove="'",to_add=" ",base_folder=path).run()
+    #if check:
+    #    print(f'{RED}{BOLD}{"=" * width}{RESET}')
+    #    print(f"{RED}{BOLD}ERRORS FOUND: STOPPING EXECUTION{RESET}")
+    #    print(f'{RED}{BOLD}{"=" * width}{RESET}')
+    #    sys.exit(1)
     print(f"{CYAN}{BOLD}NO ERRORS FOUND{RESET}")
     print(f'{ORANGE}{BOLD}{"=" * width}{RESET}')
     print(f"{ORANGE}{BOLD}Probing Files{RESET}")

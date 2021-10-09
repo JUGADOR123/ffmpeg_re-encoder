@@ -27,8 +27,6 @@ class Probe:
         self.keys: List[str] = []
         self.acodecs = []
         self.vcodecs = []
-        self.command = shlex.split(
-            "ffprobe -v quiet -print_format json -show_streams")
         self.extenions = [".mp4", ".mkv"]
 
     def _recursive_dict(self, subdict: dict) -> None:
@@ -54,16 +52,14 @@ class Probe:
                 self.keys.append(key)
 
     def _probe(self, file: Path, file_name) -> None:
+        command = f'ffprobe -v quiet -print_format json -show_streams "{file}"'
         print(f'{ORANGE}{"=" * width}{RESET}')
         print(f"{ORANGE}Inspecting:  {file_name}{RESET}")
-
-        self.command.append(file)
         try:
-            output = subprocess.check_output(self.command).decode("utf-8")
+            output = subprocess.check_output(command).decode("utf-8")
             data = json.loads(output)
             for subdict in data["streams"]:
                 self._recursive_dict(subdict)
-            self.command.pop()
         except Exception as e:
             print(f"{RED}{BOLD}ERROR INSPECTING FILE: {e}{RESET}")
             self.failed_items.append((file_name, e))
@@ -81,12 +77,12 @@ class Probe:
                     if file_extension in self.extenions:
                         file_path = Path(os.path.join(root, file))
                         self._probe(file_path, file_name)
-                        sleep(2)
+                        sleep(0.5)
                     else:
                         print(
                             f"{RED}{BOLD}{file_name}{file_extension}: Not a video file{RESET}"
                         )
-                        sleep(2)
+                        sleep(1)
         print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
         print(f"{CYAN}{BOLD}Audio Codecs found:  {BLUE}{self.acodecs}{RESET}")
         print(f"{CYAN}{BOLD}Video Codecs found: {BLUE}{self.vcodecs}{RESET}")
