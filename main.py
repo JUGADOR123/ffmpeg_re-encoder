@@ -22,7 +22,7 @@ def main():
         print(f'{RED}{BOLD}{"=" * width}{RESET}')
         print(f"{RED}{BOLD}ERRORS FOUND: STOPPING EXECUTION{RESET}")
         print(f'{RED}{BOLD}{"=" * width}{RESET}')
-    print(f"{BLUE}{BOLD}NO ERRORS FOUND")
+    print(f"{BLUE}{BOLD}NO ERRORS FOUND{RESET}")
 
 
 
