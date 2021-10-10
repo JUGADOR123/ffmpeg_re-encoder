@@ -7,6 +7,7 @@ import os
 import shutil
 import json
 import subprocess
+import math
 
 HEADER = "\033[95m"
 BLUE = "\033[94m"
@@ -64,6 +65,8 @@ class Probe:
         command = f'ffprobe -v quiet -print_format json -show_streams "{file}"'
         print(f'{ORANGE}{"=" * width}{RESET}')
         print(f"{ORANGE}Inspecting:  {file_name}{RESET}")
+        size=os.path.getsize(file)
+        print(f"{BLUE}{BOLD}File Size: {math.trunc((size/(1024*1024)))} MB")
         try:
             output = subprocess.check_output(command).decode("utf-8")
             data = json.loads(output)
