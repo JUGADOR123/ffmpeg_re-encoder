@@ -2,7 +2,7 @@ from pathlib import Path
 from posixpath import splitext
 from time import sleep
 from typing import List
-import shlex
+from src.reencode import Encode
 import os
 import shutil
 import json
@@ -20,8 +20,9 @@ width = shutil.get_terminal_size((80, 20)).columns
 
 
 class Probe:
-    def __init__(self, base_folder: Path) -> None:
+    def __init__(self, base_folder: Path, output_dir: Path) -> None:
         self.base_folder = Path(base_folder).absolute()
+        self.output_dir = Path(output_dir).absolute()
         self.items: List[str] = []
         self.failed_items: List[str] = []
         self.keys: List[str] = []
@@ -31,12 +32,14 @@ class Probe:
 
     def _recursive_dict(self, subdict: dict) -> None:
         if subdict["codec_type"] == "video":
+
             if subdict['codec_name'] not in self.vcodecs:
                 self.vcodecs.append(subdict['codec_name'])
 
             print(
                 f"{GREEN}Video Codec: {ORANGE}{subdict['codec_name']}{RESET}")
         elif subdict["codec_type"] == "audio":
+
             if subdict['codec_name'] not in self.acodecs:
                 self.acodecs.append(subdict['codec_name'])
             print(
@@ -47,6 +50,12 @@ class Probe:
             f"{GREEN}Subtitle Codec: {ORANGE}{subdict['codec_name']}{RESET}"
         else:
             print(f"{RED}{BOLD}Unknown Track{RESET}")
+            print(f"{RED}{BOLD}Codec type: {subdict['codec_type']}{RESET}")
+            print(f"{RED}{BOLD}Codec Name: {subdict['codec_name']}{RESET}")
+            print(
+                f"{RED}{BOLD}Codec Long Name:{subdict['codec_long_name']}{RESET}"
+            )
+            sleep(5)
         for key in subdict.keys():
             if key not in self.keys:
                 self.keys.append(key)
@@ -65,8 +74,13 @@ class Probe:
             self.failed_items.append((file_name, e))
             print(f'{ORANGE}{"=" * width}{RESET}')
         else:
-            print(f'{ORANGE}{"=" * width}{RESET}')
             self.items.append(file_name)
+            if len(self.acodecs) != 0 and len(self.vcodecs) != 0:
+                Encode(file, self.output_dir, self.acodecs, self.vcodecs).run()
+                self.acodecs.clear()
+                self.vcodecs.clear()
+                print(f'{ORANGE}{"=" * width}{RESET}')
+            sleep(1)
 
     def run(self) -> None:
         for root, sub, files in os.walk(self.base_folder):
@@ -77,13 +91,8 @@ class Probe:
                     if file_extension in self.extenions:
                         file_path = Path(os.path.join(root, file))
                         self._probe(file_path, file_name)
-                        sleep(0.5)
                     else:
                         print(
                             f"{RED}{BOLD}{file_name}{file_extension}: Not a video file{RESET}"
                         )
                         sleep(1)
-        print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
-        print(f"{CYAN}{BOLD}Audio Codecs found:  {BLUE}{self.acodecs}{RESET}")
-        print(f"{CYAN}{BOLD}Video Codecs found: {BLUE}{self.vcodecs}{RESET}")
-        print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
