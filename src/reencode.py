@@ -4,6 +4,8 @@ import threading
 from pathlib import Path
 import math
 import subprocess
+import src.variables
+import os
 width = shutil.get_terminal_size((80, 20)).columns
 HEADER = "\033[95m"
 BLUE = "\033[94m"
@@ -99,7 +101,9 @@ class Encode:
             match(ac,vc):
                 case("aac","hevc"):
                     print(f"{RED}No encoding needed... Skipping{RESET}")
-
+                    size=os.path.getsize(self.filepath)
+                    gb_size = (size / (1024 * 1024 * 1024)) #size in gb
+                    src.variables.total_post_encoding_size+=gb_size
                     break
                 case(x,"hevc"):
                     print(f"{GREEN}Re-encoding audio only...{RESET}")
@@ -112,8 +116,14 @@ class Encode:
                     p.wait()
                     self.animating=False
                     self.t.join()
+                    size=os.path.getsize(Path(f"{self.output_path}\ENCODED-{self.filename}.mkv"))
+                    mb_size = math.trunc((size / (1024 * 1024))) #size in mb
+                    gb_size = (size / (1024 * 1024 * 1024)) #size in gb
+                    src.variables.total_post_encoding_size+=gb_size
                     print("")
                     print(f"{GREEN}Time taken to encode: {math.trunc(time.time()-str_time)} Seconds{RESET}")
+                    print(f"{BLUE}{BOLD}Output file size: {mb_size} MB")
+                    src.variables.total_encoded_files+=1
 
                     break
                 case("aac",y):
@@ -128,8 +138,14 @@ class Encode:
                     p.wait()
                     self.animating=False
                     self.t.join()
+                    size=os.path.getsize(Path(f"{self.output_path}\ENCODED-{self.filename}.mkv"))
+                    mb_size = math.trunc((size / (1024 * 1024))) #size in mb
+                    gb_size = (size / (1024 * 1024 * 1024)) #size in gb
+                    src.variables.total_post_encoding_size+=gb_size
                     print("")
                     print(f"{GREEN}Time taken to encode: {math.trunc(time.time()-str_time)} Seconds{RESET}")
+                    print(f"{BLUE}{BOLD}Output file size: {mb_size} MB")
+                    src.variables.total_encoded_files+=1
                     break
                 case _:
                     print(f"{GREEN}Re-encoding audio and video...{RESET}")
@@ -142,8 +158,14 @@ class Encode:
                     p.wait()
                     self.animating=False
                     self.t.join()
+                    size=os.path.getsize(Path(f"{self.output_path}\ENCODED-{self.filename}.mkv"))
+                    mb_size = math.trunc((size / (1024 * 1024))) #size in mb
+                    gb_size = (size / (1024 * 1024 * 1024)) #size in gb
+                    src.variables.total_post_encoding_size+=gb_size
                     print("")
                     print(f"{GREEN}Time taken to encode: {math.trunc(time.time()-str_time)} Seconds{RESET}")
+                    print(f"{BLUE}{BOLD}Output file size: {mb_size} MB")
+                    src.variables.total_encoded_files+=1
 
                     break
     def run(self)->None:

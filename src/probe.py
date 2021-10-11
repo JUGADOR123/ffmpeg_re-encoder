@@ -8,6 +8,7 @@ import shutil
 import json
 import subprocess
 import math
+import src.variables
 
 HEADER = "\033[95m"
 BLUE = "\033[94m"
@@ -66,7 +67,11 @@ class Probe:
         print(f'{ORANGE}{"=" * width}{RESET}')
         print(f"{ORANGE}Inspecting:  {file_name}{RESET}")
         size=os.path.getsize(file)
-        print(f"{BLUE}{BOLD}File Size: {math.trunc((size/(1024*1024)))} MB")
+        mb_size = math.trunc((size / (1024 * 1024))) #size in mb
+        gb_size = (size / (1024 * 1024 * 1024)) #size in gb
+        src.variables.total_pre_encoding_size +=gb_size
+        src.variables.total_files+=1
+        print(f"{BLUE}{BOLD}File Size: {mb_size} MB")
         try:
             output = subprocess.check_output(command).decode("utf-8")
             data = json.loads(output)

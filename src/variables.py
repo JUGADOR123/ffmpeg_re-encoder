@@ -1,6 +1,9 @@
 def init():
-    global total_post_encoding_size,total_pre_encoding_size,total_files,total_encoded_files
-    total_pre_encoding_size: float = 0
-    total_post_encoding_size: float = 0
-    total_files: int = 0
-    total_encoded_files: int = 0
+    global total_post_encoding_size
+    global total_pre_encoding_size
+    global total_files
+    global total_encoded_files
+    total_pre_encoding_size = 0  #in gb
+    total_post_encoding_size= 0 #in gb
+    total_files = 0
+    total_encoded_files = 0

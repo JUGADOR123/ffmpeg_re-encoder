@@ -3,6 +3,7 @@ import time
 #from src.renaming import Rename
 from src.probe import Probe
 import math
+import src.variables
 
 width = shutil.get_terminal_size((80, 20)).columns
 HEADER = "\033[95m"
@@ -34,7 +35,12 @@ def main():
     Probe(indir, outdir).run()
 def out():
     print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
-    print(f"{CYAN}Total time ellapsed: {math.trunc(time.time()-str_time)}")
+    print(f"{CYAN}Total time ellapsed: {(math.trunc(time.time()-str_time))/60} Minutes")
+    print(f"{CYAN}Total Files: {src.variables.total_files}{RESET}")
+    print(f"{CYAN}Total encoded files: {src.variables.total_encoded_files}{RESET}")
+    print(f"{CYAN}Total pre encoding size: {round(src.variables.total_pre_encoding_size,3)} GB {RESET}")
+    print(f"{CYAN}Total post encoding size: {round(src.variables.total_post_encoding_size,3)} GB {RESET}")
+    print(f"{CYAN}Space Saved: {round((src.variables.total_pre_encoding_size-src.variables.total_post_encoding_size),3)} GB{RESET}")
     print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
 
 
@@ -43,4 +49,6 @@ outdir = input("Enter output folder path: ")
 #path = r"C:\Users\Jugador\Desktop\test"
 
 if __name__ == "__main__":
+    src.variables.init()
     main()
+    out()
