@@ -79,7 +79,7 @@ class Probe:
         else:
             self.items.append(file_name)
             if len(self.acodecs) != 0 and len(self.vcodecs) != 0:
-                Encode(file, self.output_dir, self.acodecs, self.vcodecs).run()
+                Encode(file,file_name, self.output_dir, self.acodecs, self.vcodecs).run()
                 self.acodecs.clear()
                 self.vcodecs.clear()
                 print(f'{ORANGE}{"=" * width}{RESET}')
