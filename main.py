@@ -36,6 +36,7 @@ def main():
 def out():
     print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
     print(f"{CYAN}Total time ellapsed: {(math.trunc(time.time()-str_time))/60} Minutes")
+    print(f"{CYAN}Average ellapsed time: {((math.trunc(time.time()-str_time))/60)/src.variables.total_files} Minutes/file{RESET}")
     print(f"{CYAN}Total Files: {src.variables.total_files}{RESET}")
     print(f"{CYAN}Total encoded files: {src.variables.total_encoded_files}{RESET}")
     print(f"{CYAN}Total pre encoding size: {round(src.variables.total_pre_encoding_size,3)} GB {RESET}")
