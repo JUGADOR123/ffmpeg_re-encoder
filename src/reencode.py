@@ -13,7 +13,7 @@ ORANGE = "\033[93m"
 RED = "\033[91m"
 RESET = "\033[0m"
 BOLD = "\033[1m"
-animating=True
+
 
 
 
@@ -99,6 +99,7 @@ class Encode:
             match(ac,vc):
                 case("aac","hevc"):
                     print(f"{RED}No encoding needed... Skipping{RESET}")
+
                     break
                 case(x,"hevc"):
                     print(f"{GREEN}Re-encoding audio only...{RESET}")

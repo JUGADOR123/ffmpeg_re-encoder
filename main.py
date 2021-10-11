@@ -1,8 +1,8 @@
 import shutil
-from time import sleep
+import time
 #from src.renaming import Rename
 from src.probe import Probe
-import sys
+import math
 
 width = shutil.get_terminal_size((80, 20)).columns
 HEADER = "\033[95m"
@@ -13,7 +13,7 @@ ORANGE = "\033[93m"
 RED = "\033[91m"
 RESET = "\033[0m"
 BOLD = "\033[1m"
-
+str_time=time.time()
 
 def main():
     #print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
@@ -30,8 +30,12 @@ def main():
     print(f'{ORANGE}{BOLD}{"=" * width}{RESET}')
     print(f"{ORANGE}{BOLD}Probing & Re-encoding files{RESET}".center(width))
     print(f'{ORANGE}{BOLD}{"=" * width}{RESET}')
-    sleep(5)
+    time.sleep(5)
     Probe(indir, outdir).run()
+def out():
+    print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
+    print(f"{CYAN}Total time ellapsed: {math.trunc(time.time()-str_time)}")
+    print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
 
 
 indir = input("Enter input folder path: ")
