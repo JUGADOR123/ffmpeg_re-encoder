@@ -13,23 +13,23 @@ main.py
     - show stats()
 
 dataclass
-    - hardware accelerated state
-    - total number of files renamed
-    - total number of failed renamed files
-    - total number of  probed files 
-    - total number of failed probed
-    - total number of files to encode
-    - list of files to encode (name)
-    - total number of encoded files
-    - total number of failed encoded files
-    - starting time
-    - ending time
-    - average encoding time
-    - expected time remaining?
-    - initial file size
-    - ending file size
-    - saved space
-    - percentage saved
+    done - hardware accelerated state
+    done - total number of files renamed
+    done - total number of failed renamed files
+    done - total number of  probed files 
+    done - total number of failed probed
+    done - total number of files to encode
+    done - list of files to encode (name)
+    done - total number of encoded files
+    done - total number of failed encoded files
+    done - starting time
+    done - ending time
+    done - average encoding time
+    done - expected time remaining?
+    done - initial file size
+    done - ending file size
+    done - saved space
+    done - percentage saved
 
 rename.py
     -recursively go through the initial folder
