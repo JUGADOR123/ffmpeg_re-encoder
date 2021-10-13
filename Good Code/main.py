@@ -4,6 +4,7 @@ import time
 from src.probe import Probe
 import math
 import src.variables
+import sys
 
 width = shutil.get_terminal_size((80, 20)).columns
 HEADER = "\033[95m"
@@ -15,6 +16,9 @@ RED = "\033[91m"
 RESET = "\033[0m"
 BOLD = "\033[1m"
 str_time=time.time()
+
+def checks():
+    print(sys.version)    
 
 def main():
     #print(f'{CYAN}{BOLD}{"=" * width}{RESET}')
@@ -50,6 +54,7 @@ outdir = input("Enter output folder path: ")
 #path = r"C:\Users\Jugador\Desktop\test"
 
 if __name__ == "__main__":
-    src.variables.init()
-    main()
-    out()
+    checks()
+    #src.variables.init()
+    #main()
+    #out()

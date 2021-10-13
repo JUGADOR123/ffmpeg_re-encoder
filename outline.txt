@@ -1,0 +1,74 @@
+
+main.py
+    - General info
+    - check python version
+    - if python not 3.10, exit
+    - ask if hardware accelerated
+    -check OS
+    - if OS == not windows, run the rename script
+    - run the probe() script
+    - if errors on probing, show them and ask if they want to proceed
+    - run the encode() script
+    - show errors that occured while encoding
+    - show stats()
+
+dataclass
+    - hardware accelerated state
+    - total number of files renamed
+    - total number of failed renamed files
+    - total number of  probed files 
+    - total number of failed probed
+    - total number of files to encode
+    - list of files to encode (name)
+    - total number of encoded files
+    - total number of failed encoded files
+    - starting time
+    - ending time
+    - average encoding time
+    - expected time remaining?
+    - initial file size
+    - ending file size
+    - saved space
+    - percentage saved
+
+rename.py
+    -recursively go through the initial folder
+    - if illegal character is found, replace it
+    - if renaming fails, += to failed renamed files
+    - if renaming dosent fail,+= to the file renamed counter
+probe.py
+    -recursively go through the initial folder
+    - print file name and all of the codecs
+    - += total file size
+    - if codecs dont match to output, add to list of files to encode
+    - if codecs dont match to output, += total of files to encode
+    - if codecs do match, skip file
+    - if probing fails += failed probed files
+    - += total probed files
+encode.py
+    -recursively go through initial folder
+    - if file name is on to encode list:
+        - print initial size 
+        - file start time
+        - encode the file
+        - end time
+        - print end size
+        - += total encoded size
+        - update average encoding time
+        - uptade expected time remaining
+    - if encoding fails += to failed encoded files
+    - if encoding dosent fails += to encoded files
+stats.py
+    - general stats:
+        - print total files
+        - print total encoded files
+        - print total time taken
+        - print average time taken
+        - print initial size
+        - print re encoded size
+        - print space saved
+    - error stats:
+        - print the individual failed probes
+        - print total failed probes
+        - print the individual failed encodes
+        - print the total failed encodes
