@@ -47,6 +47,7 @@ class variables:
     input_file_path: str
     output_file_path: str
     files_to_encode: List[tuple]
+    rename:bool=False
     hwacc: bool = False
 
 
