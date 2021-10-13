@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-import shutil
+from shutil import get_terminal_size
 
 
 @dataclass
@@ -52,7 +52,7 @@ class variables:
 
 @dataclass(frozen=True)
 class colors:
-    width = shutil.get_terminal_size((80, 20)).columns
+    width = get_terminal_size((80, 20)).columns
     HEADER = "\033[95m"
     BLUE = "\033[94m"
     CYAN = "\033[96m"
