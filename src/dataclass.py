@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 from shutil import get_terminal_size
+from statistics import mean
 
 
 @dataclass
@@ -24,18 +25,16 @@ class statistics:
     ending_file_size: float
     space_saved: float
     percentage_saved: float
+    all_individual_time_taken:float
 
     @property
     def average_time(self) -> float:
-        return round(
-            self.individual_encoding_ending_time - self.individual_encoding_ending_time,
-            3,
-        )
+        return round((self.all_individual_time_taken/self.total_number_of_encoded_files+1),3)
 
     @property
     def time_remaining(self) -> float:
         return round(
-            (self.remaining_files_to_encode * self.average_time) - self.starting_time,
+            (self.remaining_files_to_encode * self.average_time()) - self.starting_time,
             3,
         )
 
