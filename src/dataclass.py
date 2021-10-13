@@ -25,12 +25,19 @@ class statistics:
     space_saved: float
     percentage_saved: float
 
-    average_time: float = round(
-        individual_encoding_ending_time - individual_encoding_ending_time, 3
-    )
-    time_remaining: float = round(
-        (remaining_files_to_encode * average_time) - starting_time, 3
-    )
+    @property
+    def average_time(self) -> float:
+        return round(
+            self.individual_encoding_ending_time - self.individual_encoding_ending_time,
+            3,
+        )
+
+    @property
+    def time_remaining(self) -> float:
+        return round(
+            (self.remaining_files_to_encode * self.average_time) - self.starting_time,
+            3,
+        )
 
 
 @dataclass
@@ -42,6 +49,9 @@ class variables:
     files_to_encode: List[tuple]
     hwacc: bool = False
 
+
+@dataclass(frozen=True)
+class colors:
     width = shutil.get_terminal_size((80, 20)).columns
     HEADER = "\033[95m"
     BLUE = "\033[94m"
