@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import List
 from shutil import get_terminal_size
-from statistics import mean
 
 
 @dataclass
