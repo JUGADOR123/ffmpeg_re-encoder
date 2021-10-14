@@ -24,11 +24,13 @@ class statistics:
     ending_file_size: float
     space_saved: float
     percentage_saved: float
-    all_individual_time_taken:float
+    all_individual_time_taken: float
 
     @property
     def average_time(self) -> float:
-        return round((self.all_individual_time_taken/self.total_number_of_encoded_files+1),3)
+        return round(
+            (self.all_individual_time_taken / self.total_number_of_encoded_files + 1), 3
+        )
 
     @property
     def time_remaining(self) -> float:
@@ -45,7 +47,7 @@ class variables:
     input_file_path: str
     output_file_path: str
     files_to_encode: List[tuple]
-    rename:bool=False
+    rename: bool = False
     hwacc: bool = False
 
 
