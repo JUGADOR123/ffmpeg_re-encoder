@@ -1,5 +1,5 @@
 
-main.py Working on it
+Working on it -main.py:
     done - General info
     done - check python version
     done - if python not 3.10, exit
@@ -12,7 +12,7 @@ main.py Working on it
     - show errors that occured while encoding
     - show stats()
 
-dataclass
+done -dataclass: 
     done - hardware accelerated state
     done - total number of files renamed
     done - total number of failed renamed files

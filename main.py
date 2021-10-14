@@ -33,7 +33,7 @@ class main:
             sys.exit(1)
         if os.name != "nt":
             print(
-                f"{c.ORANGE}{c.BOLD}Warning: This tool was meant for windows but it can also run on windows.{c.RESET}"
+                f"{c.ORANGE}{c.BOLD}Warning: This tool was meant for windows but it can also run on Linux.{c.RESET}"
             )
             choice = input(
                 f"{c.ORANGE}To make it work on linux,  aphostrophes need to be removed from all directories and file names. This program can do it automatically. {c.CYAN}Proceed? [Y/N]{c.RESET}"
