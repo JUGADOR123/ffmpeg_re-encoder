@@ -41,12 +41,22 @@ class statistics:
 
 
 @dataclass
+class errors:
+    """Class for error checking"""
+    errors_on_rename: bool
+    errors_on_probe: bool
+    errors_on_encode: bool
+
+
+@dataclass
 class variables:
     """A class that holds all useful variables"""
 
     input_file_path: str
     output_file_path: str
-    files_to_encode: List[tuple]
+    audio_tracks_to_encode:List[tuple]
+    video_tracks_to_encode:List[tuple]
+    both_tracks_to_encode:List[tuple]
     rename: bool = False
     hwacc: bool = False
 

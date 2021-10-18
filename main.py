@@ -1,8 +1,11 @@
-from src.dataclass import colors as c
-from src.dataclass import variables as v
 import os
 import sys
+from pathlib import Path
 from time import sleep
+
+from src.dataclass import colors as c
+from src.dataclass import variables as v
+from src.probe import Probe
 
 
 class main:
@@ -61,12 +64,34 @@ class main:
 
         print(f"{c.BLUE}{c.BOLD}{'='*c.width}{c.RESET}")
 
+    def _input(self) -> None:
+        check=True
+        while check:
+            ipath = input(f"{c.CYAN}Enter input folder: {c.RESET}")
+            if  os.path.isdir(ipath):
+                check=False
+            else:
+                print(f"{c.RED}{c.BOLD}File path is not valid.{c.RESET}")
+        check2=True
+        while check2:
+            opath = input(f"{c.CYAN}Enter output folder: {c.RESET}")
+            if  os.path.isdir(opath):
+                check2=False
+            else:
+                print(f"{c.RED}{c.BOLD}File path is not valid.{c.RESET}")
+        
+        
+        v.input_file_path = Path(ipath).absolute()
+        v.output_file_path = Path(opath).absolute()
+
     def run(self):
         self._cls()
         self._info()
         sleep(5)
         self._checks()
+        self._input()
 
 
 if __name__ == "__main__":
     main().run()
+    Probe().run()
