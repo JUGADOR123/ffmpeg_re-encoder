@@ -2,11 +2,12 @@ import os
 import sys
 from pathlib import Path
 from time import sleep
-
+from src.dataclass import statistics as stat
 from src.dataclass import colors as c
 from src.dataclass import variables as v
 from src.probe import Probe
-
+from src.statistics import Statistics
+from time import time
 
 class main:
     def __init__(self) -> None:
@@ -26,7 +27,7 @@ class main:
             f"{c.CYAN}It encodes the video track and all the individual audio tracks, while keeping other tracks such as images, subtitles, or attachments intact.{c.RESET}"
         )
 
-    def _checks(self) -> None:
+    def _initial__checks(self) -> None:
         print(f"{c.BLUE}{c.BOLD}{'='*c.width}{c.RESET}")
         if sys.version_info < (3, 10):
             print(
@@ -88,10 +89,12 @@ class main:
         self._cls()
         self._info()
         sleep(5)
-        self._checks()
+        self._initial__checks()
         self._input()
 
 
 if __name__ == "__main__":
     main().run()
+    stat.starting_time=time()
     Probe().run()
+    Statistics().run()

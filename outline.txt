@@ -5,12 +5,12 @@ Working on it -main.py:
     done - if python not 3.10, exit
     done - ask if hardware accelerated
     done -check OS
-    half done - if OS == not windows, run the rename script
-    - run the probe() script
+    done - if OS == not windows, run the rename script
+    half done - run the probe() script
     - if errors on probing, show them and ask if they want to proceed
     - run the encode() script
     - show errors that occured while encoding
-    - show stats()
+    half done - show stats()
 
 done -dataclass: 
     done - hardware accelerated state
@@ -32,7 +32,7 @@ done -dataclass:
     done - percentage saved
 
 rename.py will do last 
-    -recursively go through the initial folder
+    done -recursively go through the initial folder
     - if illegal character is found, replace it
     - if renaming fails, += to failed renamed files
     - if renaming dosent fail,+= to the file renamed counter

@@ -4,6 +4,7 @@ from posixpath import splitext
 from src.dataclass import variables as v
 from src.dataclass import colors as c
 from src.dataclass import statistics as stats
+from time import sleep
 
 
 class Probe:
@@ -34,4 +35,5 @@ class Probe:
 
     def run(self) -> None:
         self._info()
+        sleep(5)
         self._transverse_folder()
