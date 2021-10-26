@@ -1,4 +1,3 @@
-import os
 import threading
 import time
 from dataclass import colors as c
