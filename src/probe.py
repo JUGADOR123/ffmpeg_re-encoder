@@ -31,6 +31,8 @@ class Probe:
 
 
     def _probe(self, file_path: str, file_name: str) -> None:
+        print(f"{c.BLUE}{c.BOLD}Probing: {file_name}{c.RESET}")
+        
         stats.total_probed_files+=1
 
     def run(self) -> None:

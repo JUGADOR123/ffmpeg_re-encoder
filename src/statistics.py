@@ -9,7 +9,7 @@ class Statistics:
     def _print(self)->None:
         #print(f"{c.GREEN}{c.RESET}")
         print(f"{c.ORANGE}{c.BOLD}{'='*c.width}{c.RESET}")
-        print(f"{c.GREEN}Time taken: {(stat.starting_time-stat.ending_time)/60}{c.RESET}")
+        print(f"{c.GREEN}Time taken: {(stat.ending_time-stat.starting_time)/60}{c.RESET}")
         print(f"{c.GREEN}Total files found: {stat.total_files}{c.RESET}")
         print(f"{c.GREEN}Total renamed files: {stat.total_files_renamed}{c.RESET}")
         print(f"{c.GREEN}Total files probed: {stat.total_probed_files}{c.RESET}")
