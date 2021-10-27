@@ -9,7 +9,7 @@ from src.probe import Probe
 from src.statistics import Statistics
 from time import time
 
-class main:
+class Main:
     def __init__(self) -> None:
         pass
 
@@ -29,9 +29,9 @@ class main:
 
     def _initial__checks(self) -> None:
         print(f"{c.BLUE}{c.BOLD}{'='*c.width}{c.RESET}")
-        if sys.version_info < (3, 10):
+        if sys.version_info < (3, 9):
             print(
-                f"{c.RED}{c.BOLD}You must use Python 3.10.x or greater, please update{c.RESET}"
+                f"{c.RED}{c.BOLD}You must use Python 3.9.x or greater, please update{c.RESET}"
             )
             sleep(5)
             sys.exit(1)

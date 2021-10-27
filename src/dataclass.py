@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import List
 from shutil import get_terminal_size
 
 
@@ -13,6 +12,9 @@ class statistics:
     total_probed_files: int=0
     total_failed_probed_files: int=0
     total_number_of_files_to_encode: int=0
+    audio_tracks_to_encode: int=0
+    video_tracks_to_encode: int=0
+    both_tracks_to_encode: int=0
     remaining_files_to_encode: int=0
     total_number_of_encoded_files: int=0
     total_number_of_failed_encodes: int=0
@@ -54,9 +56,9 @@ class variables:
 
     input_file_path: str
     output_file_path: str
-    audio_tracks_to_encode:List[tuple]
-    video_tracks_to_encode:List[tuple]
-    both_tracks_to_encode:List[tuple]
+    audio_tracks_to_encode=[]
+    video_tracks_to_encode=[]
+    both_tracks_to_encode=[]
     rename: bool = False
     hwacc: bool = False
 
