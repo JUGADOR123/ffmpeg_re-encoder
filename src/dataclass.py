@@ -6,27 +6,27 @@ from shutil import get_terminal_size
 class statistics:
     """A class that holds all the statistic based variables"""
 
-    total_files: int=0
-    total_files_renamed: int=0
-    total_failed_renamed_files: int=0
-    total_probed_files: int=0
-    total_failed_probed_files: int=0
-    total_number_of_files_to_encode: int=0
-    audio_tracks_to_encode: int=0
-    video_tracks_to_encode: int=0
-    both_tracks_to_encode: int=0
-    remaining_files_to_encode: int=0
-    total_number_of_encoded_files: int=0
-    total_number_of_failed_encodes: int=0
-    starting_time: float=0
-    ending_time: float=0
-    individual_encoding_starting_time: float=0
-    individual_encoding_ending_time: float=0
-    initial_file_size: float=0
-    ending_file_size: float=0
-    space_saved: float=0
-    percentage_saved: float=0
-    all_individual_time_taken: float=0
+    total_files: int = 0
+    total_files_renamed: int = 0
+    total_failed_renamed_files: int = 0
+    total_probed_files: int = 0
+    total_failed_probed_files: int = 0
+    total_number_of_files_to_encode: int = 0
+    audio_tracks_to_encode: int = 0
+    video_tracks_to_encode: int = 0
+    both_tracks_to_encode: int = 0
+    remaining_files_to_encode: int = 0
+    total_number_of_encoded_files: int = 0
+    total_number_of_failed_encodes: int = 0
+    starting_time: float = 0
+    ending_time: float = 0
+    individual_encoding_starting_time: float = 0
+    individual_encoding_ending_time: float = 0
+    initial_file_size: float = 0
+    ending_file_size: float = 0
+    space_saved: float = 0
+    percentage_saved: float = 0
+    all_individual_time_taken: float = 0
 
     @property
     def average_time(self) -> float:
@@ -45,6 +45,7 @@ class statistics:
 @dataclass
 class errors:
     """Class for error checking"""
+
     errors_on_rename: bool
     errors_on_probe: bool
     errors_on_encode: bool
@@ -56,9 +57,9 @@ class variables:
 
     input_file_path: str
     output_file_path: str
-    audio_tracks_to_encode=[]
-    video_tracks_to_encode=[]
-    both_tracks_to_encode=[]
+    audio_tracks_to_encode = []
+    video_tracks_to_encode = []
+    both_tracks_to_encode = []
     rename: bool = False
     hwacc: bool = False
 

@@ -9,6 +9,7 @@ from src.probe import Probe
 from src.statistics import Statistics
 from time import time
 
+
 class Main:
     def __init__(self) -> None:
         pass
@@ -66,22 +67,21 @@ class Main:
         print(f"{c.BLUE}{c.BOLD}{'='*c.width}{c.RESET}")
 
     def _input(self) -> None:
-        check=True
+        check = True
         while check:
             ipath = input(f"{c.CYAN}{'Enter input folder:':23s}{c.RESET}")
-            if  os.path.isdir(ipath):
-                check=False
+            if os.path.isdir(ipath):
+                check = False
             else:
                 print(f"{c.RED}{c.BOLD}File path is not valid.{c.RESET}")
-        check2=True
+        check2 = True
         while check2:
             opath = input(f"{c.CYAN}{'Enter output folder:':23}{c.RESET}")
-            if  os.path.isdir(opath):
-                check2=False
+            if os.path.isdir(opath):
+                check2 = False
             else:
                 print(f"{c.RED}{c.BOLD}File path is not valid.{c.RESET}")
-        
-        
+
         v.input_file_path = Path(ipath).absolute()
         v.output_file_path = Path(opath).absolute()
 
@@ -94,6 +94,6 @@ class Main:
 
 
 if __name__ == "__main__":
-    main().run()
-    stat.starting_time=time()
+    Main().run()
+    stat.starting_time = time()
     Probe().run()
