@@ -1,7 +1,7 @@
 import threading
 import time
-from dataclass import colors as c
-from dataclass import statistics as t
+from src.dataclass import colors as c
+from src.dataclass import statistics as t
 
 
 class Animation:

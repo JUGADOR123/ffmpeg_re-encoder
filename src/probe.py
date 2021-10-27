@@ -6,6 +6,7 @@ import subprocess
 from src.dataclass import variables as v
 from src.dataclass import colors as c
 from src.dataclass import statistics as stats
+from src.dataclass import errors as err
 from time import sleep
 
 from src.statistics import Statistics
@@ -80,6 +81,8 @@ class Probe:
         except subprocess.CalledProcessError as e:
             print(f"{c.RED}{c.BOLD}{e.output}{c.RESET}")
             stats.total_failed_probed_files += 1
+            if err.errors_on_probe is not True:
+                err.errors_on_probe = True
         else:
             self._codec_check(file_path, file_name, vcodec, acodec)
         stats.total_probed_files += 1
