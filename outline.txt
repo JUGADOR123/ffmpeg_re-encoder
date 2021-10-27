@@ -40,13 +40,13 @@ probe.py
     done - recursively go through the initial folder
     done - print file name and all of the codecs
     done - += total file size
-    - if codecs dont match to output, add to list of files to encode
-    - if codecs dont match to output, += total of files to encode
-    - if codecs do match, skip file
+    done - if codecs dont match to output, add to list of files to encode
+    done - if codecs dont match to output, += total of files to encode
+    done - if codecs do match, skip file
     done - if probing fails += failed probed files
     done - += total probed files
 encode.py
-    -recursively go through initial folder
+    not needed anymore -recursively go through initial folder
     - if file name is on to encode list:
         - print initial size 
         - file start time
@@ -60,15 +60,15 @@ encode.py
     - if encoding dosent fails += to encoded files
 stats.py
     - general stats:
-        - print total files
-        - print total encoded files
-        - print total time taken
+        done - print total files
+        semi done- print total encoded files
+        done - print total time taken
         - print average time taken
-        - print initial size
+        done - print initial size
         - print re encoded size
         - print space saved
     - error stats:
         - print the individual failed probes
-        - print total failed probes
+        done - print total failed probes
         - print the individual failed encodes
         - print the total failed encodes
