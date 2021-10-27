@@ -52,7 +52,7 @@ class main:
         print(
             f"{c.CYAN}This tool supports hardware encoding, although ffmpeg needs to be configured with '--enable-nvenc' and a compatible gpu is required. If you meet these requirements you can enable hardware encoding on this tool.{c.RESET}"
         )
-        choice = input(f"{c.ORANGE}Enable hardware encoding? [Y/N]{c.RESET}")
+        choice = input(f"{c.ORANGE}{'Enable hardware encoding? [Y/N]: '}{c.RESET}")
         if choice.lower() == "y":
             print(f"{c.GREEN}Enabled hardware encoding.{c.RESET}")
             v.hwacc = True
@@ -68,14 +68,14 @@ class main:
     def _input(self) -> None:
         check=True
         while check:
-            ipath = input(f"{c.CYAN}Enter input folder: {c.RESET}")
+            ipath = input(f"{c.CYAN}{'Enter input folder:':23s}{c.RESET}")
             if  os.path.isdir(ipath):
                 check=False
             else:
                 print(f"{c.RED}{c.BOLD}File path is not valid.{c.RESET}")
         check2=True
         while check2:
-            opath = input(f"{c.CYAN}Enter output folder: {c.RESET}")
+            opath = input(f"{c.CYAN}{'Enter output folder:':23}{c.RESET}")
             if  os.path.isdir(opath):
                 check2=False
             else:
@@ -97,4 +97,3 @@ if __name__ == "__main__":
     main().run()
     stat.starting_time=time()
     Probe().run()
-    Statistics().run()
