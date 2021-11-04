@@ -1,0 +1,2 @@
+ffmpeg -i "E:\Content\test\S2-E16 A Certain Magical Index Rosary of the Appointed Time.mp4" -map 0 -c:a copy -c:s srt -c:v hevc_nvenc -preset p7 -tier high -rc cbr   "output.mkv"
+ ffmpeg -i "E:\Content\test\S2-E16 A Certain Magical Index Rosary of the Appointed Time.mp4" -map 0 -c:a copy -c:s srt -c:v hevc_nvenc  -preset p7  -tier high -rc cbr   "output.mkv"
